@@ -1,5 +1,6 @@
 package com.saubhagya.bookManagement;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -10,7 +11,9 @@ import java.util.Optional;
 
 @Service
 public class bookService {
-    bookRepository repo = new bookRepository();
+
+    @Autowired
+    bookRepository repo;
 
     public Boolean addBook(Book book) throws BookAlreadyExistsException{
         Optional<Book> opt = repo.getByID(book.getBookId());
